@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="bgimg-full" style="background-image:url({{ url_for('static', filename='media/fire_matte.jpg') }});">
+  <img src="{{ url_for('static', filename='media/telescope_transparent.svg') }}" width="100%" height="auto">
+</div>
+<div class="info-pane">
+  <div class="info-text">
+    <h3>What is Telescope?</h3>
+    <p>
+    Telescope is a machine learning assisted toolkit for image and video compositors
+    with applications in visual effects, matte painting and diverse use cases across
+    the video post production pipeline. Tools from existing compositing packages can
+    interact with our novel ML core to assist or completely automate the rotoscoping
+    process. The core of our rotoscoping program is the deep learning model that
+    takes the image to be cropped and an associated trimap, and outputs the cropped
+    portion. The image to be cropped can be of anything the user wishes. This is a
+    new and essential feature, as previous ML solutions use algorithms that must be
+    told what they are isolating (e.g. a person, car, building, etc.). All Telescope
+    needs is a rough visual of what it should cut out, and our model takes it from
+    there.
+    </p>
+  </div>
+</div>
+<div class="bgimg-med" style="background-image:url({{ url_for('static', filename='media/tree_matte.jpg') }});">
+  <div class="caption">
+    <span class="border">Rotoscoping &amp; Image Matting</span>
+  </div>
+</div>
+<div class="info-pane">
+  <div class="info-text">
+    <p>
+    Rotoscoping is the process of frame by frame selecting and isolating a given
+    feature in a video, such that you can produce a video clip of exclusively that
+    feature on a transparent background. This allows the isolated subject to be
+    composited into another video clip with a different background; an example of this
+    effect in action is in the movie Forrest Gump where he is inserted into historical 
+    footage as a recipient of a Medal of Honor, given to him by President LBJ. 
+    A feature length film will often consist of hundreds of rotoscoped shots with multiple 
+    tracked mattes per image, and this is the primary job of thousands of roto artists 
+    accross the world.
+    </p>
+    <p>
+    Typical roto tasks include: selecting and tracking objects like on-set wires and
+    rigs to remove them from the movie, and isolating objects for compositing - which
+    is how effects artists create 3D interactions; by layering many flat, 2D clips of 
+    the same subject. The Dinosaurs in Jurassic Park are all clips rendered out by 
+    other graphics software and inserted into the film footage. Talented artists 
+    painstakingly used rotoscoping on the actors and many objects in the scene, so the
+    Dinosaurs could appear to pass behind and around them in the massively multi-layered
+    clips. Rotoscoping can be an incredibly challenging and time-consuming process, as the
+    artist must adjust their selection, or mask for every frame to match the new position
+    and movement of the subject.
+    </p>
+  </div>
+</div>
+<div class="bgimg-med" style="background-image:url({{ url_for('static', filename='media/fire_matte.jpg') }});">
+  <div class="caption">
+    <span class="border">Trimaps</span>
+  </div>
+</div>
+<div class="info-pane">
+  <div class="info-text">
+    <p>
+    A trimap is a single channel image with three regions: white, which indicates
+    the definite foreground of the feature to be extracted; black, which indicates
+    the background to be excluded from the extraction; and gray, which indicates
+    the uncertain regions that need to be processed, such as the edges of the
+    subject, or complex regions like hair.
+    </p>
+  </div>
+  <div id="trimap-workflow">
+    <div class="img-row">
+      <div class="img-column">
+        <img src="{{ url_for('static', filename='media/hair_source.jpg') }}" width="100%" height="auto">
+      </div>
+      <div class="img-column">
+        <img src="{{ url_for('static', filename='media/hair_trimap.jpg') }}" width="100%" height="auto">
+      </div>
+      <div class="img-column">
+        <img src="{{ url_for('static', filename='media/hair_matte.jpg') }}" width="100%" height="auto">
+      </div>
+      <div class="img-column">
+        <img src="{{ url_for('static', filename='media/hair_composited.jpg') }}" width="100%" height="auto">
+      </div>
+    </div>
+  </div>
+  <div class="info-text">
+    <p>
+    Telescope works by taking two inputs: the RGB source image and the single
+    channel trimap and processes them through a nueral network to output a
+    single channel alpha matte, which is used in compositing software to extract
+    the feature from the RGB source image.
+    </p>
+  </div>
+</div>
+<div class="bgimg-med" style="background-image:url({{ url_for('static', filename='media/tree_matte.jpg') }});">
+  <div class="container">
+    <div class="row">
+      <div class="caption caption-top mt-5 mb-5">
+        <span class="border">Model Samples</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col sample-header">
+        <h5>Source Image</h5>
+      </div>
+      <div class="col sample-header">
+        <h5>Trimap</h5>
+      </div>
+      <div class="col sample-header">
+        <h5>Alphamatte</h5>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/images/cloth.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/trimaps/cloth.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/alphamattes/cloth.png') }}" class="img-fluid">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/images/hair.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/trimaps/hair.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/alphamattes/hair.png') }}" class="img-fluid">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/images/sieve.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/trimaps/sieve.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/alphamattes/sieve.png') }}" class="img-fluid">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/images/smoke.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/trimaps/smoke.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/alphamattes/smoke.png') }}" class="img-fluid">
+      </div>
+    </div>
+    <div class="row mt-5 mb-5">
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/images/gown.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/trimaps/gown.png') }}" class="img-fluid">
+      </div>
+      <div class="col">
+        <img src="{{ url_for('static', filename='media/samples/alphamattes/gown.png') }}" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="info-pane">
+  <div class="info-text text-center">
+    <p>Click on the 'DEMO' button below to draw your own trimap over a sample image and generate an alphamatte.</p>
+  </div>
+</div>
+<div class="bgimg-full" style="background-image:url({{ url_for('static', filename='media/fire_matte.jpg') }});">
+  <div class="caption">
+    <span class="border"><a href="{{ url_for('demo') }}">DEMO</a></span>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<h1>{% block title %}Demo{% endblock %}</h1>
+{% block content %}
+<header>
+  <img src="{{ url_for('static', filename='media/telescope_transparent.svg') }}" width="50%" height="auto">
+</header>
+<div class="container demo-container">
+  <img id="sourceImage" src="{{ url_for('static', filename='media/flowers.png') }}">
+  <canvas id="trimapCanvas" width="320" height="320"></canvas>
+  <canvas id="imageCanvas" width ="320" height="320" hidden></canvas>
+  <img id="alphamatteImage" src="" style="display: none;">
+</div>
+<div class="mt-5">
+  <p>Select a color and line width and try drawing a trimap over the flowers.</p>
+  <p>You do not need to completely fill in the space, and any space not colored in is considered black (background).</p>
+  <p>Mobile functionality not available at the moment.</p>
+</div>
+<div id="colorSelect" class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-light active">
+    <input value="white" type="radio" name="options" id="line-white" autocomplete="off" checked> White
+  </label>
+  <label class="btn btn-dark">
+    <input value="black" type="radio" name="options" id="line-black" autocomplete="off"> Black
+  </label>
+  <label class="btn btn-secondary">
+    <input value="gray" type="radio" name="options" id="line-gray" autocomplete="off"> Gray
+  </label>
+</div>
+<div class="lineSelect form-group mt-2 mb-3">
+  <label for="lineWidth">Line Width</label>
+  <input type="range" class="form-control-range" id="lineWidth" value="12" step="1" min="5" max="40">
+</div>
+<button id="telescope-button" type="button" class="btn btn-success mb-3">Generate Alphamatte</button>
+<button id="clear-button" type="button" class="btn btn-danger mb-3">Clear Trimap</button>
+<button id="toggle-button" type="button" class="btn btn-danger mb-3" style="display: none;">Toggle Alphamatte Visibility</button>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/index.min.js') }}"></script>
+{% endblock %}

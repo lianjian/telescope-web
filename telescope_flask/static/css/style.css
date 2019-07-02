@@ -1,0 +1,180 @@
+body, html {
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  margin: 0;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.info-pane {
+  position: relative;
+  justify-items: center;
+  background-color:#282E34;
+}
+
+.info-pane .info-text {
+  color:#FFFFFF;
+  padding:50px 80px;
+  text-align: justify;
+}
+
+/* Parallax scrolling for desktop browsers */
+.bgimg-med, .bgimg-full {
+  position: relative;
+  opacity: 1;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bgimg-med {
+  min-height: 400px;
+}
+
+.bgimg-full {
+  min-height: 100%;
+}
+
+#trimap-workflow {
+  align-content: space-evenly;
+  display: table-cell;
+}
+
+.img-row {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 4px;
+  justify-content: center;
+}
+
+.img-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+}
+
+.caption span.border {
+  letter-spacing: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #111;
+  color: white;
+  padding: 18px;
+  font-size: 25px;
+  display: inline-block;
+}
+
+.caption-top {
+  position: static;
+}
+
+.sample-header {
+  background-color: #282E34;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.caption span.border a:link, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.caption span.border a:hover {
+  opacity: .5;
+  transition: .3s;
+}
+
+.demo-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#sourceImage {
+  margin-top: 20px;
+  z-index: 0;
+}
+
+#alphamatteImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 20px;
+  z-index: 3;
+}
+
+#trimapCanvas {
+  margin-top: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#colorSelect {
+  padding-top: 50px;
+}
+
+.lineSelect {
+  margin: auto;
+  width: 300px;
+}
+
+#functionToolbar {
+  margin: auto;
+}
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-full, .bgimg-med {
+    background-attachment: scroll;
+  }
+
+  .bgimg-full {
+    min-height: 400px;
+  }
+
+}
+
+@media screen and (max-width: 812px) {
+header img {
+  width: 100%;
+}
+  .img-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+
+  .img-row {
+    flex-wrap: wrap;
+  }
+  
+  .info-pane .info-text {
+    padding:30px 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .img-column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}

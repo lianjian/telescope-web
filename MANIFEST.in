@@ -1,0 +1,3 @@
+graft telescope/static
+graft telescope/templates
+global-exclude *.pyc
