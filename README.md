@@ -16,12 +16,12 @@ Visit [telescope-nn](https://github.com/brendanvonhofe/telescope-nn) if you wish
 
 
 ### Building (Linux)
-Requires
-python3
-pip
-git
-wget
-tar
+Requires:  
+python3  
+pip  
+git  
+wget  
+tar  
 
 ```
 git clone https://github.com/philipmvitale/telescope-web.git
@@ -48,7 +48,7 @@ sh run_dev.sh
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
